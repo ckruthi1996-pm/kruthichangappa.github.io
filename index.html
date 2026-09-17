@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kruthi Changappa — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EEF0EA;
+    --surface: #E2E5DC;
+    --surface-2: #D8DCD1;
+    --text: #171B1A;
+    --muted: #565F5C;
+    --accent: #9C6425;
+    --accent-2: #3F7F77;
+    --line: #C9CDC1;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10141A;
+      --surface: #1A2128;
+      --surface-2: #212A32;
+      --text: #E9E7DF;
+      --muted: #909A9F;
+      --accent: #DB9E51;
+      --accent-2: #6FB6AC;
+      --line: #2A333B;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #10141A;
+    --surface: #1A2128;
+    --surface-2: #212A32;
+    --text: #E9E7DF;
+    --muted: #909A9F;
+    --accent: #DB9E51;
+    --accent-2: #6FB6AC;
+    --line: #2A333B;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-mark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.92rem;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    text-decoration: none;
+    font-size: 0.88rem;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 8px 14px;
+    border-radius: 3px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  @media (max-width: 620px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 76px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent-2);
+    margin: 0 0 18px;
+  }
+  h1.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5.6vw, 3.6rem);
+    line-height: 1.05;
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero-role {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    color: var(--muted);
+    margin: 0 0 26px;
+    font-weight: 500;
+  }
+  .hero-summary {
+    max-width: 62ch;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin: 0 0 44px;
+  }
+  .hero-summary strong { color: var(--accent-2); font-weight: 600; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .stat {
+    background: var(--bg);
+    padding: 20px 18px;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.4vw, 2rem);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.35;
+  }
+  @media (max-width: 620px) {
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .section-note {
+    font-size: 0.86rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .tl-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+  .tl-item:first-of-type { border-top: none; }
+  .tl-date {
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+  .tl-role {
+    font-weight: 600;
+    font-size: 1.02rem;
+  }
+  .tl-company {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-top: 2px;
+  }
+  @media (max-width: 560px) {
+    .tl-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ---------- CASE STUDIES ---------- */
+  .case {
+    padding: 44px 0;
+    border-top: 1px solid var(--line);
+  }
+  .case:first-of-type { border-top: none; padding-top: 0; }
+  .case-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-2);
+    margin: 0 0 10px;
+  }
+  .case-title {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .case-meta {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .case-meta span:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--muted);
+    margin: 0 9px;
+    vertical-align: middle;
+  }
+  .case-block { margin-bottom: 20px; }
+  .case-block h4 {
+    font-size: 0.78rem;
+    text-transform: none;
+    color: var(--muted);
+    margin: 0 0 6px;
+    font-weight: 600;
+  }
+  .case-block p { margin: 0; max-width: 68ch; }
+
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 22px 0;
+  }
+  .flow span.arrow { color: var(--accent-2); }
+
+  .case-outcome {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .outcome-chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    border-radius: 2px;
+  }
+  .outcome-chip b { color: var(--accent); font-family: var(--font-display); }
+
+  .case-learning {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 68ch;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+  }
+  @media (max-width: 620px) {
+    .skill-groups { grid-template-columns: 1fr; }
+  }
+  .skill-group h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    margin: 0 0 10px;
+    color: var(--accent-2);
+    font-weight: 600;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    font-size: 0.82rem;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  /* ---------- EDUCATION / CERTS ---------- */
+  .ed-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.94rem;
+  }
+  .ed-row:first-of-type { border-top: none; }
+  .ed-row span:last-child { color: var(--muted); white-space: nowrap; font-family: var(--font-mono); font-size: 0.82rem; }
+
+  .cert-list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
+  .cert-list li {
+    font-size: 0.92rem;
+    padding-left: 18px;
+    position: relative;
+  }
+  .cert-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 6px; height: 6px;
+    background: var(--accent-2);
+    border-radius: 50%;
+  }
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer {
+    padding: 60px 0 70px;
+  }
+  .contact-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .contact-sub {
+    color: var(--muted);
+    max-width: 50ch;
+    margin: 0 0 30px;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .contact-links a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    padding: 11px 18px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-links a.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+  }
+  .contact-links a:not(.primary):hover { border-color: var(--accent-2); color: var(--accent-2); }
+  .foot-note {
+    margin-top: 48px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top">Kruthi Changappa</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Case studies</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:ckruthi1996@gmail.com">Get in touch</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero" style="border-top:none;">
+    <p class="hero-kicker">Product Manager — SaaS, Platform &amp; Analytics</p>
+    <h1 class="hero-name">Kruthi Changappa</h1>
+    <p class="hero-role">Turning messy operational problems into dashboards, workflows and roadmaps people actually use</p>
+    <p class="hero-summary">7+ years across product strategy, discovery and delivery in telecom, SaaS, CRM and customer-experience platforms. I work closely with engineering, operations and business stakeholders to turn ambiguous problems into <strong>prioritized, shippable</strong> product decisions — and I measure whether they actually worked.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">faster operational decision-making, via reporting &amp; observability</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">improvement in service resolution efficiency, Customer 360</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">25%</div>
+        <div class="stat-label">reduction in manual effort across 10,000+ platform users</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20%</div>
+        <div class="stat-label">increase in feature adoption from structured prioritization</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <h2 class="section-title">Experience</h2>
+      <span class="section-note">2018 — 2025</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">Jan 2025 – Nov 2025</div>
+      <div>
+        <div class="tl-role">Platform Product Manager</div>
+        <div class="tl-company">Circles.co (via Erobern Consulting LLP), Bangalore</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Mar 2024 – Oct 2024</div>
+      <div>
+        <div class="tl-role">Product Manager</div>
+        <div class="tl-company">Jalan Technologies, Jaipur (Remote)</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Nov 2022 – Dec 2023</div>
+      <div>
+        <div class="tl-role">Product Manager</div>
+        <div class="tl-company">Node Technologies Pvt Ltd, Bangalore</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">May 2022 – Nov 2022</div>
+      <div>
+        <div class="tl-role">Project Manager / CSM</div>
+        <div class="tl-company">Hudini, Bangalore</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Dec 2018 – Apr 2022</div>
+      <div>
+        <div class="tl-role">Team Manager</div>
+        <div class="tl-company">Pharmeasy (Docon API Holdings), Bangalore</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <h2 class="section-title">Case studies</h2>
+      <span class="section-note">4 selected projects</span>
+    </div>
+
+    <!-- Case 01 -->
+    <article class="case">
+      <p class="case-eyebrow">Case study 01</p>
+      <h3 class="case-title">BI Reporting &amp; Observability Platform</h3>
+      <div class="case-meta">
+        <span>Circles.co</span><span>Platform Product Manager</span><span>Telecom / Analytics — Tsel market</span>
+      </div>
+
+      <div class="case-block">
+        <h4>Problem</h4>
+        <p>Operational teams lacked visibility into platform performance, which made it slow to spot and diagnose issues. Decisions were being made without a clear, structured view of what was actually happening.</p>
+      </div>
+
+      <div class="case-block">
+        <h4>My role</h4>
+        <p>I worked with business, operations and technology stakeholders to understand reporting needs, defined and prioritized requirements, translated them for engineering, and supported UAT and rollout.</p>
+      </div>
+
+      <div class="flow">
+        <span>Operational need</span><span class="arrow">→</span><span>Requirements</span><span class="arrow">→</span><span>Dashboard &amp; observability capabilities</span><span class="arrow">→</span><span>Engineering delivery</span><span class="arrow">→</span><span>UAT</span><span class="arrow">→</span><span>Release</span>
+      </div>
+
+      <div class="case-block">
+        <h4>Outcome</h4>
+        <p>Introduced BI reporting dashboards and observability capabilities for the Tsel market, giving teams real-time visibility into platform behaviour instead of reacting after the fact.</p>
+      </div>
+
+      <div class="case-outcome">
+        <div class="outcome-chip"><b>40%</b> faster decision-making</div>
+        <div class="outcome-chip">Reduced issue diagnosis time</div>
+      </div>
+
+      <p class="case-learning">Key learning: analytics products need to be designed around decisions and workflows, not just more data. For platform products, observability is only valuable if it helps a team know what to act on.</p>
+    </article>
+
+    <!-- Case 02 -->
+    <article class="case">
+      <p class="case-eyebrow">Case study 02</p>
+      <h3 class="case-title">Customer 360 &amp; Operator Portal</h3>
+      <div class="case-meta">
+        <span>Circles.co</span><span>Platform Product Manager</span><span>Telecom / Customer Experience — ONIC &amp; AT&amp;T</span>
+      </div>
+
+      <div class="case-block">
+        <h4>Problem</h4>
+        <p>Operators had to navigate fragmented workflows to understand customer context, which slowed down service resolution and operational decisions.</p>
+      </div>
+
+      <div class="case-block">
+        <h4>My role</h4>
+        <p>I owned product requirements and delivery end to end — defining and prioritizing enhancements, working with UX, engineering and business stakeholders, managing sprint execution, and coordinating rollout across markets.</p>
+      </div>
+
+      <div class="case-block">
+        <h4>Solution</h4>
+        <p>Introduced two 360° customer views inside the operator portal, consolidating fragmented information into one place. Alongside this, I shipped platform capabilities including KYC onboarding for AT&amp;T, role-based access control and maker-checker workflows — strengthening governance and compliance.</p>
+      </div>
+
+      <div class="case-outcome">
+        <div class="outcome-chip"><b>30%</b> better service resolution efficiency</div>
+        <div class="outcome-chip"><b>25%</b> less manual effort across 10,000+ users</div>
+      </div>
+
+      <p class="case-learning">Key learning: improving a B2B platform doesn't always mean adding functionality. Bringing the right information together at the right point in the workflow can matter more than building something new.</p>
+    </article>
+
+    <!-- Case 03 -->
+    <article class="case">
+      <p class="case-eyebrow">Case study 03</p>
+      <h3 class="case-title">Kizuna Care Platform</h3>
+      <div class="case-meta">
+        <span>Jalan Technologies</span><span>Product Manager</span><span>SaaS / Caregiving</span>
+      </div>
+
+      <div class="case-block">
+        <h4>Problem</h4>
+        <p>Families and professional caregivers needed an easier way to connect — the onboarding process for caregivers joining the platform was a specific friction point.</p>
+      </div>
+
+      <div class="case-block">
+        <h4>My role</h4>
+        <p>I led roadmap execution, defined requirements, worked closely with UX/UI, coordinated QA and testing, and ran sprint planning across the product development lifecycle.</p>
+      </div>
+
+      <div class="flow">
+        <span>Requirements</span><span class="arrow">→</span><span>UX/UI</span><span class="arrow">→</span><span>Development</span><span class="arrow">→</span><span>QA</span><span class="arrow">→</span><span>UAT</span><span class="arrow">→</span><span>Launch</span>
+      </div>
+
+      <div class="case-outcome">
+        <div class="outcome-chip">Onboarding streamlined for <b>200+</b> caregivers</div>
+        <div class="outcome-chip"><b>25%</b> shorter dev cycles via Agile adoption</div>
+      </div>
+
+      <p class="case-learning">Key learning: onboarding is a core product experience, not a setup formality. On a two-sided platform, reducing friction for one group can shape the health of the whole ecosystem.</p>
+    </article>
+
+    <!-- Case 04 -->
+    <article class="case">
+      <p class="case-eyebrow">Case study 04</p>
+      <h3 class="case-title">SalesGO CRM &amp; Lead Management Platform</h3>
+      <div class="case-meta">
+        <span>Node Technologies</span><span>Product Manager</span><span>CRM / Lead Management / Analytics</span>
+      </div>
+
+      <div class="case-block">
+        <h4>Problem</h4>
+        <p>Multiple enhancement requests competed for limited development capacity, with no structured way to decide what to build next.</p>
+      </div>
+
+      <div class="case-block">
+        <h4>My role</h4>
+        <p>I ran customer and market research, built and managed the roadmap, prioritized features, and partnered with design, engineering and marketing through A/B testing, UAT and release.</p>
+      </div>
+
+      <div class="flow">
+        <span>Customer feedback + analytics + business impact</span><span class="arrow">→</span><span>Prioritization</span><span class="arrow">→</span><span>Roadmap</span><span class="arrow">→</span><span>Development</span><span class="arrow">→</span><span>Testing</span><span class="arrow">→</span><span>Release</span>
+      </div>
+
+      <div class="case-block">
+        <h4>Solution</h4>
+        <p>Introduced a roadmap prioritization framework that combined customer usage data with business-impact scoring, instead of prioritizing on stakeholder requests alone.</p>
+      </div>
+
+      <div class="case-outcome">
+        <div class="outcome-chip"><b>20%</b> increase in feature adoption</div>
+        <div class="outcome-chip"><b>15%</b> improvement in user satisfaction</div>
+      </div>
+
+      <p class="case-learning">Key learning: prioritization gets sharper when customer feedback is combined with quantitative usage data and business impact — especially on a product with multiple, competing stakeholders.</p>
+    </article>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Product management</h4>
+        <div class="tag-list">
+          <span class="tag">Product strategy</span>
+          <span class="tag">Discovery</span>
+          <span class="tag">Roadmapping</span>
+          <span class="tag">Lifecycle management</span>
+          <span class="tag">Feature prioritization</span>
+          <span class="tag">PRDs</span>
+          <span class="tag">User stories</span>
+          <span class="tag">Agile / Scrum</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Platform &amp; SaaS</h4>
+        <div class="tag-list">
+          <span class="tag">Platform products</span>
+          <span class="tag">Enterprise SaaS</span>
+          <span class="tag">Workflow automation</span>
+          <span class="tag">CRM</span>
+          <span class="tag">Customer experience</span>
+          <span class="tag">Platform governance</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Technical &amp; analytics</h4>
+        <div class="tag-list">
+          <span class="tag">Requirements gathering</span>
+          <span class="tag">API &amp; integration concepts</span>
+          <span class="tag">SQL</span>
+          <span class="tag">KPI definition</span>
+          <span class="tag">Dashboarding</span>
+          <span class="tag">A/B testing</span>
+          <span class="tag">Funnel analysis</span>
+          <span class="tag">UAT &amp; release validation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools</h4>
+        <div class="tag-list">
+          <span class="tag">Jira</span>
+          <span class="tag">Confluence</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Miro</span>
+          <span class="tag">Mixpanel</span>
+          <span class="tag">PostHog</span>
+          <span class="tag">Google Analytics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <h2 class="section-title">Education &amp; certifications</h2>
+    </div>
+    <div class="ed-row">
+      <span>Bachelor of Engineering, Civil Engineering — Sapthagiri College of Engineering</span>
+      <span>2018</span>
+    </div>
+    <ul class="cert-list">
+      <li>Product Management — Great Learning</li>
+      <li>Product Roadmapping — Product School</li>
+      <li>Product Lifecycle Management — Great Learning</li>
+      <li>AI Micro-Certification</li>
+      <li>Product Analytics Micro-Certification — Product School</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <h2 class="contact-title">Let's talk</h2>
+  <p class="contact-sub">Open to Product Manager roles in SaaS, platform and analytics products. Happy to walk through any of the case studies above in more detail.</p>
+  <div class="contact-links">
+    <a class="primary" href="mailto:ckruthi1996@gmail.com">ckruthi1996@gmail.com</a>
+    <a href="tel:+919148083321">+91 91480 83321</a>
+  </div>
+  <p class="foot-note">Bangalore, Karnataka</p>
+</footer>
+
+</body>
+</html>
